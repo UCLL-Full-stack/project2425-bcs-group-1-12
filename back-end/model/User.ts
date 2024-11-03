@@ -4,7 +4,7 @@ export class User {
     private lastName: string;
     private email: string;
     private password: string;
-    private admin: boolean;
+
 
     constructor(user: {
         id: number;
@@ -12,7 +12,6 @@ export class User {
         lastName: string;
         email: string;
         password: string;
-        admin: boolean;
     }) {
         this.validate(user);
 
@@ -21,7 +20,6 @@ export class User {
         this.lastName = user.lastName;
         this.email = user.email;
         this.password = user.password;
-        this.admin = user.admin;
     }
 
     getId(): number {
@@ -50,7 +48,6 @@ export class User {
         lastName: string;
         email: string;
         password: string;
-        admin: boolean;
     }) {
         if (!user.id) {
             throw new Error('User ID is required');
@@ -66,9 +63,6 @@ export class User {
         }
         if (!user.password?.trim()) {
             throw new Error('Password is required');
-        }
-        if (!user.admin) {
-            throw new Error('User role is required');
         }
     }
 
