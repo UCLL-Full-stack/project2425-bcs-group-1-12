@@ -1,3 +1,5 @@
+
+
 type UserInput = {
     id: number;
     firstName: string;
@@ -6,3 +8,15 @@ type UserInput = {
     password: string;
     admin: boolean;
 };
+
+type ReportInput = {
+    id?: string;         
+    title: string;      
+    date: Date;       
+    content: string;    
+};
+
+export {
+    UserInput,
+    ReportInput
+}

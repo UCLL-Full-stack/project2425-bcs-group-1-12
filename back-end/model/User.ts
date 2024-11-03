@@ -24,6 +24,10 @@ export class User {
         this.admin = user.admin;
     }
 
+    isAdmin(): boolean {
+        return this.admin
+    }
+
     getId(): number {
         return this.id;
     }
@@ -66,9 +70,6 @@ export class User {
         }
         if (!user.password?.trim()) {
             throw new Error('Password is required');
-        }
-        if (!user.admin) {
-            throw new Error('User role is required');
         }
     }
 
