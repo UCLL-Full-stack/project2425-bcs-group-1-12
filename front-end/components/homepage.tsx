@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import Header from './header';
 import Footer from './footer';
+import DonationBanner from './donation-banner';
+import Comments from './comments';
+import FAQ from './faq';
+import ImpactSection from './impact-section';
 
 const HomePage: React.FC = () => {
   // Состояние для активной секции
@@ -45,6 +49,10 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
+      <div style={{ width: '100vw', margin: '0 auto' }}>
+      <ImpactSection />
+      </div>
+
       {/* Интерактивные секции */}
       <div style={styles.contentSection}>
         <div style={styles.textSection}>
@@ -70,7 +78,13 @@ const HomePage: React.FC = () => {
           />
         </div>
       </div>
+      <DonationBanner />
+      <Comments />
+      <div style={{ width: '100vw', margin: '0 auto' }}>
+        <FAQ />
+      </div>
       <Footer />
+      
     </div>
   );
 };
@@ -103,6 +117,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
+    fontFamily: 'Inter, sans-serif',
   } as React.CSSProperties,
   heading: {
     fontSize: '2rem',
@@ -117,9 +132,11 @@ const styles = {
   contentSection: {
     display: 'flex',
     alignItems: 'stretch',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     padding: '20px',
     flexGrow: 1,
+    maxWidth: '60rem', // Ограничение ширины секции
+    margin: '6rem auto', // Центрирование по горизонтали
   } as React.CSSProperties,
   textSection: {
     flex: 1,
@@ -143,13 +160,13 @@ const styles = {
     color: '#aaa',
   } as React.CSSProperties,
   imageSection: {
-    width: "30vw",
-    height: "51vh",
-    
+    width: '24vw',
+    height: '41vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   } as React.CSSProperties,
 };
+
 
 export default HomePage;

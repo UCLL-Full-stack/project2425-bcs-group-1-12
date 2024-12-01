@@ -1,8 +1,11 @@
 // components/Header.tsx
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const Header: React.FC = () => {
+  const [isDonateHovered, setIsDonateHovered] = useState(false);
+  const [isLoginHovered, setIsLoginHovered] = useState(false);
+
   return (
     <header style={styles.header}>
       <div style={styles.logo}>
@@ -16,11 +19,28 @@ const Header: React.FC = () => {
         <a href="#contact" style={styles.navLink}>Contact us</a>
       </nav>
       <div style={styles.buttons}>
-        <button style={styles.donateButton}>
+        <button
+          style={{
+            ...styles.donateButton,
+            transform: isDonateHovered ? 'scale(1.1)' : 'scale(1)',
+          }}
+          onMouseEnter={() => setIsDonateHovered(true)}
+          onMouseLeave={() => setIsDonateHovered(false)}
+        >
           <span style={styles.buttonText}>Donate</span>
           <img src="/heart.png" alt="Heart" style={styles.heartImage} />
         </button>
-        <button style={styles.loginButton}>Login</button>
+        <button
+          style={{
+            ...styles.loginButton,
+            backgroundColor: isLoginHovered ? '#C2FF9C' : 'transparent',
+            color: isLoginHovered ? 'black' : '#C2FF9C',
+          }}
+          onMouseEnter={() => setIsLoginHovered(true)}
+          onMouseLeave={() => setIsLoginHovered(false)}
+        >
+          Login
+        </button>
       </div>
     </header>
   );
@@ -58,7 +78,7 @@ const styles = {
   donateButton: {
     backgroundColor: '#C2FF9C',
     color: 'black',
-    padding: '10px 15px', // Уменьшенная ширина
+    padding: '10px 15px',
     border: 'none',
     borderRadius: '8px',
     fontSize: '16px',
@@ -67,7 +87,8 @@ const styles = {
     justifyContent: 'center',
     gap: '6px',
     cursor: 'pointer',
-    minWidth: '120px', // Уменьшенная минимальная ширина кнопки
+    minWidth: '120px',
+    transition: 'transform 0.3s ease-in-out', // Плавное увеличение
   } as React.CSSProperties,
   heartImage: {
     width: '24px',
@@ -81,11 +102,12 @@ const styles = {
     backgroundColor: 'transparent',
     color: '#C2FF9C',
     border: '2px solid #C2FF9C',
-    padding: '10px 15px', // Уменьшенная ширина
+    padding: '10px 15px',
     borderRadius: '8px',
     fontSize: '16px',
     cursor: 'pointer',
-    minWidth: '120px', // Уменьшенная минимальная ширина кнопки
+    minWidth: '120px',
+    transition: 'background-color 0.3s ease-in-out, color 0.3s ease-in-out', // Плавный переход
   } as React.CSSProperties,
 };
 

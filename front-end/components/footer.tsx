@@ -92,10 +92,11 @@ const Footer: React.FC = () => {
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
               <img src="/linked-in.png" alt="LinkedIn" style={{ width: '30px', height: '30px' }} />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-              <img src="/youtube.png" alt="YouTube" style={{ width: '47px', height: '30px' }} />
+            </div>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ marginRight: '3vw' }}>
+              <img src="/youtube.png" alt="YouTube" style={{ width: '47px', height: '30px' , marginTop: "10px"}} />
             </a>
-          </div>
+          
         </div>
       </div>
 
