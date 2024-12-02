@@ -14,17 +14,17 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Matthew Zavalick",
-    role: "Organisation cofounder",
-    text: "I believe, kindness and cooperating is the most important part of human nature...",
+    role: "RCO cofounder",
+    text: "It's been a long and challenging road since Abdul and I started working together to help the Rohingya, but we've managed to persevere through many struggles. I am proud of the work we've done and the lives we've had a positive impact on.",
   },
   {
-    name: "Abdul",
-    role: "RCO cofounder and refugee",
-    text: "I am happy I had an honor to work on this website. Together we can improve lives of other people, and this is the biggest miracle in our life we can do.",
+    name: "Abdul Wajed",
+    role: "RCO cofounder and program coordinator",
+    text: "In my 29 years of life, 7 of those have been living in a refugee camp. I have learned that honesty never fails. Alhamdulillah, despite many challenges, Matt and I have kept working together building the RCO. thanks to your support, we have achieved things I once thought to be impossible",
   },
   {
-    name: "Anyone",
-    role: "Donor and volunteer",
+    name: "Asim",
+    role: "Sustaining Benefactor",
     text: "I am happy I had an honor to work on this website. Together we can improve lives of other people, and this is the biggest miracle in our life we can do.",
   },
 ];
