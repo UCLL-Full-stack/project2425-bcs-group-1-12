@@ -9,25 +9,29 @@ const AboutPage: React.FC = () => {
       <div style={styles.heroText}>
         <div style={styles.heading}>
           <h1 style={styles.heading}>About Us</h1>
-          <p>
-            The Rohingya Charity Organization is a non profit humanitarian aid
-            group dedicated to supporting the Rohingya refugees in Cox's Bazar,
-            Bangladesh. We are a non-profit public charity, registered in the
-            US. We coordinate our efforts with community led initiatives in the
-            camps, striving to dig wells, build shelters, educate hundreds of
-            students, and provide funding for essential medical aid to countless
-            members of our community.
-          </p>
-          <p>
-            We are funded entirely by voluntary contributions from kind hearted
-            individuals who wish to see a better life for the Rohingya people.
-            Our organization was founded out of concern for those whose needs
-            are not being met by the institutions available to them. We are
-            proud of what we have been able to accomplish in the short period of
-            time since our founding, and We will continue fighting to give as
-            much as we can to the Rohingya in order to help them through these
-            dark and difficult times.
-          </p>
+          <div>
+            <p>
+              The Rohingya Charity Organization is a non profit humanitarian aid
+              group dedicated to supporting the Rohingya refugees in Cox's
+              Bazar, Bangladesh. We are a non-profit public charity, registered
+              in the US. We coordinate our efforts with community led
+              initiatives in the camps, striving to dig wells, build shelters,
+              educate hundreds of students, and provide funding for essential
+              medical aid to countless members of our community.
+            </p>
+          </div>
+          <div>
+            <p>
+              We are funded entirely by voluntary contributions from kind
+              hearted individuals who wish to see a better life for the Rohingya
+              people. Our organization was founded out of concern for those
+              whose needs are not being met by the institutions available to
+              them. We are proud of what we have been able to accomplish in the
+              short period of time since our founding, and We will continue
+              fighting to give as much as we can to the Rohingya in order to
+              help them through these dark and difficult times.
+            </p>
+          </div>
         </div>
       </div>
     </div>
