@@ -15,19 +15,19 @@ const HomePage: React.FC = () => {
     {
       title: "Our mission",
       description:
-        "Our mission is to alleviate the suffering of the Rohingya genocide survivors living in the world's largest refugee camp in Cox's Bazar, Bangladesh.",
+        "To alleviate the suffering of the Rohingya genocide survivors confined to the world's largest refugee camp in Cox's Bazar, Bangladesh.",
       image: "/our-mission.jpg",
     },
     {
       title: "Our action",
       description:
-        "We are working with Rohingya on the ground to address as many of the community's needs as possible.",
+        "Digging wells, building shelters, paying for medical treatments, and educating children.",
       image: "/our-actions.jpg",
     },
     {
       title: "Get involved",
       description:
-        "There are many ways that you can support our cause. You can donate, share our posts on social media, or ask your friends and family if they would like to contribute to our fundraisers. You can also help by informing people about what is happening to the Rohingya in Myanmar, and how terrible the conditions in the camp are.",
+        "Help us create a better life for the heavily persecuted Rohingya by supporting our cause.",
       image: "/get-involved.jpg",
     },
   ];
@@ -49,10 +49,9 @@ const HomePage: React.FC = () => {
             Support Rohingya Refugees in Cox's Bazar, Bangladesh
           </h1>
           <p style={styles.paragraph}>
-            With your help we may provide much needed aid to the Rohingya
-            community residing in the Cox's Bazaar refugee camps. Your gifts
-            will go directly to financing our education, healthcare, food,
-            water, and shelter building initiatives.
+            Join us in making a difference for the Rohingya. Your contributions
+            allow for us to provide hundreds with education, medical treatment,
+            food, shelter, and clean water..
           </p>
         </div>
       </div>

@@ -36,13 +36,14 @@ const DonationBanner: React.FC = () => {
       padding: "20px",
       zIndex: 1,
       color: isHovered ? "black" : "white", // Change text color on hover
-      transition: "transform 0.3s ease, background-color 0.3s ease, color 0.3s ease", // Smooth transition for styles
+      transition:
+        "transform 0.3s ease, background-color 0.3s ease, color 0.3s ease", // Smooth transition for styles
     },
     textContainer: {
       flex: 1,
       maxWidth: "70%",
       transform: "rotate(1deg)", // Slightly rotate the text to compensate for the background tilt
-      fontFamily: 'Inter, sans-serif',
+      fontFamily: "Inter, sans-serif",
       //transform: isHovered ? "rotate(0deg)" : "rotate(1deg)",
     },
     heading: {
@@ -93,10 +94,11 @@ const DonationBanner: React.FC = () => {
         {/* Контейнер текста */}
         <div style={styles.textContainer}>
           <h2 style={styles.heading}>
-            Help us to provide people medicine, food, education and work
+            Help us keep our programs up and running
           </h2>
           <p style={styles.paragraph}>
-            We are organisation for lorem bngjgnrjgnrngjn rjgnrjgnrjgnergajnerjgn
+            we can only continue to provide medical treatment, education, and
+            critical infrastructure with your help.
           </p>
         </div>
 
@@ -113,7 +115,7 @@ const DonationBanner: React.FC = () => {
                 styles.button.backgroundColor;
             }}
           >
-            Donate now
+            Click here to support
           </button>
         </div>
       </div>
