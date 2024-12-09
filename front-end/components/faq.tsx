@@ -6,10 +6,21 @@ type FAQItem = {
 };
 
 const faqData: FAQItem[] = [
-  { question: "What is your mission?", answer: "Lorem ipsum dolor sit amet..." },
+  {
+    question: "How are you helping Rohingya in the camps?",
+    answer: `Early on our main focus was digging new wells 
+    in places where wells were either broken or missing. To date we have built a total of 13 wells, 
+    supplying thousands with clean drinking water. \n\n Since those early days, we have expanded into education as well.
+    We've built 4 learning centers, where we teach 177 Rohingya children important skills such as reading, writing, math, 
+    and Burmese.\n\n We have also always done what we can to help our community with the many healt problems facing them.
+    the conditions in the camp`,
+  },
   { question: "How can I donate?", answer: "Lorem ipsum dolor sit amet..." },
   { question: "Can I volunteer?", answer: "Lorem ipsum dolor sit amet..." },
-  { question: "Where does the money go?", answer: "Lorem ipsum dolor sit amet..." },
+  {
+    question: "Where does the money go?",
+    answer: "Lorem ipsum dolor sit amet...",
+  },
 ];
 
 const FAQ: React.FC = () => {
@@ -30,7 +41,11 @@ const FAQ: React.FC = () => {
         fontFamily: "Inter, sans-serif",
       }}
     >
-      <h1 style={{ textAlign: "center", marginBottom: "30px", fontSize: "36px" }}>FAQ</h1>
+      <h1
+        style={{ textAlign: "center", marginBottom: "30px", fontSize: "36px" }}
+      >
+        FAQ
+      </h1>
       {faqData.map((item, index) => (
         <div key={index} style={{ marginBottom: "20px" }}>
           <div
@@ -45,7 +60,9 @@ const FAQ: React.FC = () => {
               width: "100%",
             }}
           >
-            <span style={{ fontSize: "20px", flexGrow: 1 }}>{item.question}</span>
+            <span style={{ fontSize: "20px", flexGrow: 1 }}>
+              {item.question}
+            </span>
             <span style={{ fontSize: "24px", marginLeft: "10px" }}>
               {openIndex === index ? "−" : "+"}
             </span>
