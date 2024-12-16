@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const DonationBanner: React.FC = () => {
+const VolunteerBanner: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const styles = {
@@ -44,7 +44,6 @@ const DonationBanner: React.FC = () => {
       maxWidth: "70%",
       transform: "rotate(1deg)", // Slightly rotate the text to compensate for the background tilt
       fontFamily: "Inter, sans-serif",
-      //transform: isHovered ? "rotate(0deg)" : "rotate(1deg)",
     },
     heading: {
       fontSize: "1.5rem",
@@ -62,7 +61,6 @@ const DonationBanner: React.FC = () => {
       alignItems: "center",
       justifyContent: "center",
       transform: "rotate(1deg)",
-      //transform: isHovered ? "rotate(0deg)" : "rotate(1deg)", // Rotate button on hover
     },
     button: {
       padding: "10px 20px",
@@ -74,9 +72,22 @@ const DonationBanner: React.FC = () => {
       borderRadius: "5px",
       cursor: "pointer",
       transition: "background-color 0.3s ease",
+      display: "flex", // Ensure that the link behaves like a block element within the button
+      justifyContent: "center", // Center the text inside the button
+      alignItems: "center", // Align text vertically
     },
     buttonHover: {
       backgroundColor: "#D32F2F",
+    },
+    link: {
+      color: "inherit", // Inherit color from the button
+      textDecoration: "none", // Remove underline from link
+      display: "block", // Make the link take the whole button area
+      width: "100%", // Ensure it fills the button container
+      height: "100%", // Ensure it fills the button container
+      padding: "10px 20px", // Match the button's padding
+      backgroundColor: "inherit", // Inherit background color from button
+      borderRadius: "5px", // Match the button's border radius
     },
   };
 
@@ -94,11 +105,10 @@ const DonationBanner: React.FC = () => {
         {/* Контейнер текста */}
         <div style={styles.textContainer}>
           <h2 style={styles.heading}>
-            Help us keep our programs up and running
+            Become a volunteer
           </h2>
           <p style={styles.paragraph}>
-            We can only continue to provide medical treatment, education, and
-            critical infrastructure with your help.
+            Participate in programs to help Rogingya people.
           </p>
         </div>
 
@@ -115,7 +125,9 @@ const DonationBanner: React.FC = () => {
                 styles.button.backgroundColor;
             }}
           >
-            Click here to support
+            <a href="/register" style={styles.link}>
+              Become a volunteer
+            </a>
           </button>
         </div>
       </div>
@@ -123,4 +135,4 @@ const DonationBanner: React.FC = () => {
   );
 };
 
-export default DonationBanner;
+export default VolunteerBanner;

@@ -9,11 +9,13 @@ const Header: React.FC = () => {
   return (
     <header style={styles.header}>
       <div style={styles.logo}>
-        <img
-          src="/logo.png"
-          alt="Logo"
-          style={{ width: "clamp(60px, 8vw, 80px)" }}
-        />
+      <a href="/" style={{ display: "inline-block" }}>
+          <img
+            src="/logo.png"
+            alt="Logo"
+            style={{ width: "clamp(60px, 8vw, 80px)" }}
+          />
+        </a>
       </div>
       <nav style={styles.nav}>
         <a href="/" style={styles.navLink}>
@@ -25,10 +27,10 @@ const Header: React.FC = () => {
         <a href="#work" style={styles.navLink}>
           Our work
         </a>
-        <a href="#get-involved" style={styles.navLink}>
+        <a href="/get_involved" style={styles.navLink}>
           Get involved
         </a>
-        <a href="#contact" style={styles.navLink}>
+        <a href="/contact" style={styles.navLink}>
           Contact us
         </a>
       </nav>
@@ -53,7 +55,7 @@ const Header: React.FC = () => {
           onMouseEnter={() => setIsLoginHovered(true)}
           onMouseLeave={() => setIsLoginHovered(false)}
         >
-          Login
+          English
         </button>
       </div>
     </header>

@@ -153,6 +153,7 @@ const styles = {
     flexDirection: "column",
     justifyContent: "space-around",
     paddingRight: "20px",
+    fontFamily: "Inter"
   } as React.CSSProperties,
   section: {
     padding: "10px 20px",

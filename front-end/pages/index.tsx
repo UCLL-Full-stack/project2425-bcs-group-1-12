@@ -4,6 +4,7 @@ import Homepage from "../components/homepage";
 const Home: React.FC = () => {
   return (
     <>
+      <title>Rohingya Charity Organisation</title>
       <Homepage></Homepage>
     </>
   );
