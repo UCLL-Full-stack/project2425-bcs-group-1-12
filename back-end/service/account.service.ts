@@ -1,4 +1,4 @@
-import { Account } from "../model/account";
+/*import { Account } from "../model/account";
 import { User } from "../model/user";
 import accountDb from "../repository/account.db";
 import userDb from "../repository/user.db";
@@ -32,4 +32,4 @@ const createAccount = ({
     return account;
 }
 
-export default { createAccount }
+export default { createAccount }*/

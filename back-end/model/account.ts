@@ -1,4 +1,4 @@
-import { User } from "./user";
+/*import { User } from "./user";
 
 export class Account {
     private id: number;
@@ -42,4 +42,4 @@ export class Account {
             throw new Error('Role is required')
         }
     }
-}
+}*/

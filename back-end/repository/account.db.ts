@@ -1,4 +1,4 @@
-import { Account } from '../model/account'
+/*import { Account } from '../model/account'
 import { User } from '../model/user';
 
 const accounts: Account[] = [];
@@ -36,4 +36,4 @@ export default {
     createAccount,
     getAccountByUser,
     getAllAccounts
-}
+}*/

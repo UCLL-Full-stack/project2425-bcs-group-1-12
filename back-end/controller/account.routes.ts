@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express'
+/*import express, { Request, Response, NextFunction } from 'express'
 import accountService from '../service/account.service'
 import { AccountInput } from '../types';
 
@@ -14,4 +14,4 @@ accountRouter.post('/', async (req: Request, res: Response, next: NextFunction) 
     }
 });
 
-export { accountRouter }
+export { accountRouter }*/

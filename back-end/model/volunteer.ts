@@ -1,4 +1,4 @@
-import { User } from "./user";
+import { User } from "./User";
 
 export class Volunteer extends User {
     private goals: string[]; // Volunteer can be assigned to goal
