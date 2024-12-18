@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link"; // Импортируем Link
 import Language from "./language/language";
 import { useTranslation } from "next-i18next";
 
@@ -10,30 +11,30 @@ const Header: React.FC = () => {
   return (
     <header style={styles.header}>
       <div style={styles.logo}>
-        <a href="/" style={{ display: "inline-block" }}>
+        <Link href="/" style={{ display: "inline-block" }}>
           <img
             src="/logo.png"
             alt="Logo"
             style={{ width: "clamp(60px, 8vw, 80px)" }}
           />
-        </a>
+        </Link>
       </div>
       <nav style={styles.nav}>
-        <a href="/" style={styles.navLink}>
+        <Link href="/" style={styles.navLink}>
           {t('header.nav.home')}
-        </a>
-        <a href="/about" style={styles.navLink}>
+        </Link>
+        <Link href="/about" style={styles.navLink}>
           {t('header.nav.about_us')}
-        </a>
-        <a href="#work" style={styles.navLink}>
+        </Link>
+        <Link href="#work" style={styles.navLink}>
           {t('header.nav.our_work')}
-        </a>
-        <a href="/get_involved" style={styles.navLink}>
+        </Link>
+        <Link href="/get_involved" style={styles.navLink}>
           {t('header.nav.get_involved')}
-        </a>
-        <a href="/contact" style={styles.navLink}>
+        </Link>
+        <Link href="/contact" style={styles.navLink}>
           {t('header.nav.contact_us')}
-        </a>
+        </Link>
       </nav>
       <div style={styles.buttons}>
         <button
