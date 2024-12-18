@@ -1,0 +1,38 @@
+{
+  "site.title": "Rohingya Zakat Sangstha",
+  "header": {
+    "nav": {
+      "home": "Gorí",
+      "about_us": "Amargar goniya",
+      "our_work": "Amar kam",
+      "get_involved": "Hisa lówu",
+      "contact_us": "Amaré móla"
+    },
+    "buttons": {
+      "donate": "Dán diya",
+      "language": "Rohingya"
+    }
+  },
+  "home": {
+    "hero": {
+      "heading": "Rohingya Refugees Cox's Bazar, Bangladesh go samborko dipong",
+      "paragraph": "Rohingya sath aiyu jónai, amrar shikkha, chirir aroggo, khuda, abashon, ar porishkar pani programor modhe sahajjo korun."
+    },
+    "sections": [
+      {
+        "title": "Amar uddehso",
+        "description": "Rohingya genocid survivor an Cox's Bazar, Bangladesh shorbotho porbortite niye chechhe."
+      },
+      {
+        "title": "Amar kaj",
+        "description": "Khole jala, shelter toiri, medical treatment shomortho, shikkharo kaj."
+      },
+      {
+        "title": "Hisa lowa",
+        "description": "Persecuted Rohingya niye unnoti toiri kora, amrar uddehso support korun."
+      }
+    ]
+  }
+}
+
+  

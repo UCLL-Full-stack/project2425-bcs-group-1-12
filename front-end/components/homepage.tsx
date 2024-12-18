@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next"; // Импортируем useTranslation
 import Header from "./header";
 import Footer from "./footer";
 import DonationBanner from "./donation-banner";
@@ -10,24 +11,24 @@ const HomePage: React.FC = () => {
   // Состояние для активной секции
   const [activeSection, setActiveSection] = useState(0);
 
+  // Получаем функцию перевода
+  const { t } = useTranslation();
+
   // Данные секций
   const sections = [
     {
-      title: "Our mission",
-      description:
-        "To alleviate the suffering of the Rohingya genocide survivors confined to the world's largest refugee camp in Cox's Bazar, Bangladesh.",
+      title: t("home.sections.0.title"),
+      description: t("home.sections.0.description"),
       image: "/our-mission.jpg",
     },
     {
-      title: "Our action",
-      description:
-        "Digging wells, building shelters, paying for medical treatments, and educating children.",
+      title: t("home.sections.1.title"),
+      description: t("home.sections.1.description"),
       image: "/our-actions.jpg",
     },
     {
-      title: "Get involved",
-      description:
-        "Help us create a better life for the heavily persecuted Rohingya by supporting our cause.",
+      title: t("home.sections.2.title"),
+      description: t("home.sections.2.description"),
       image: "/get-involved.jpg",
     },
   ];
@@ -39,19 +40,17 @@ const HomePage: React.FC = () => {
       <div style={styles.heroSection}>
         <div style={styles.heroImage}>
           <img
-            src="/main-home-image.jpg"
-            alt="Support Rohingya Refugees"
+            src="/main-page.png"
+            alt={t("home.hero.heading")} // Добавляем перевод
             style={styles.image}
           />
         </div>
         <div style={styles.heroText}>
           <h1 style={styles.heading}>
-            Support Rohingya Refugees in Cox's Bazar, Bangladesh
+            {t("home.hero.heading")} {/* Перевод заголовка */}
           </h1>
           <p style={styles.paragraph}>
-            Join us in making a difference for the Rohingya by contributing to
-            our education, medical treatment, food, shelter, and clean water
-            programs.
+            {t("home.hero.paragraph")} {/* Перевод описания */}
           </p>
         </div>
       </div>

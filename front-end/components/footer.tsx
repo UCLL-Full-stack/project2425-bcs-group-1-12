@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Footer: React.FC = () => {
+  const [email, setEmail] = useState("");
+
+  const handleSubscribe = () => {
+    if (email.trim()) {
+      alert("Subscription successfully set up!");
+      setEmail(""); // Сбрасываем поле ввода
+    } else {
+      alert("Please enter a valid email address.");
+    }
+  };
+
   return (
     <footer
       style={{
@@ -27,6 +38,8 @@ const Footer: React.FC = () => {
           <div style={{ display: "flex", alignItems: "center" }}>
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="real.hero@gmail.com"
               style={{
                 padding: "10px",
@@ -41,6 +54,7 @@ const Footer: React.FC = () => {
               }}
             />
             <button
+              onClick={handleSubscribe}
               style={{
                 backgroundColor: "red",
                 color: "#fff",
@@ -65,7 +79,7 @@ const Footer: React.FC = () => {
             marginLeft: "13vw",
             display: "flex",
             flexDirection: "column",
-            alignItems: "flex-start", // Выровнять все элементы по левой линии
+            alignItems: "flex-start",
           }}
         >
           <h3 style={{ marginBottom: "4vh" }}>About us</h3>

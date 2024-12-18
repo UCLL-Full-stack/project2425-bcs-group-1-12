@@ -62,9 +62,9 @@ const VolunteerBanner: React.FC = () => {
       justifyContent: "center",
       transform: "rotate(1deg)",
     },
-    button: {
+    link: {
       padding: "10px 20px",
-      backgroundColor: "#E57373",
+      backgroundColor: isHovered ? "#D32F2F" : "#E57373", // Button color change on hover
       color: "white",
       fontSize: "1rem",
       fontWeight: "bold" as const,
@@ -75,19 +75,9 @@ const VolunteerBanner: React.FC = () => {
       display: "flex", // Ensure that the link behaves like a block element within the button
       justifyContent: "center", // Center the text inside the button
       alignItems: "center", // Align text vertically
-    },
-    buttonHover: {
-      backgroundColor: "#D32F2F",
-    },
-    link: {
-      color: "inherit", // Inherit color from the button
       textDecoration: "none", // Remove underline from link
-      display: "block", // Make the link take the whole button area
       width: "100%", // Ensure it fills the button container
       height: "100%", // Ensure it fills the button container
-      padding: "10px 20px", // Match the button's padding
-      backgroundColor: "inherit", // Inherit background color from button
-      borderRadius: "5px", // Match the button's border radius
     },
   };
 
@@ -108,27 +98,15 @@ const VolunteerBanner: React.FC = () => {
             Become a volunteer
           </h2>
           <p style={styles.paragraph}>
-            Participate in programs to help Rogingya people.
+            Participate in programs to help Rohingya people.
           </p>
         </div>
 
-        {/* Контейнер кнопки */}
+        {/* Контейнер ссылки */}
         <div style={styles.buttonContainer}>
-          <button
-            style={styles.button}
-            onMouseEnter={(e) => {
-              (e.target as HTMLButtonElement).style.backgroundColor =
-                styles.buttonHover.backgroundColor;
-            }}
-            onMouseLeave={(e) => {
-              (e.target as HTMLButtonElement).style.backgroundColor =
-                styles.button.backgroundColor;
-            }}
-          >
-            <a href="/register" style={styles.link}>
-              Become a volunteer
-            </a>
-          </button>
+          <a href="/register" style={styles.link}>
+            Become a volunteer
+          </a>
         </div>
       </div>
     </div>

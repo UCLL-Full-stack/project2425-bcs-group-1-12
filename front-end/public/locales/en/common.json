@@ -1,0 +1,38 @@
+{
+  "site.title": "Rohingya Charity Organisation",
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about_us": "About us",
+      "our_work": "Our work",
+      "get_involved": "Get involved",
+      "contact_us": "Contact us"
+    },
+    "buttons": {
+      "donate": "Donate",
+      "language": "English"
+    }
+  },
+  "home": {
+    "hero": {
+      "heading": "Support Rohingya Refugees in Cox's Bazar, Bangladesh",
+      "paragraph": "Join us in making a difference for the Rohingya by contributing to our education, medical treatment, food, shelter, and clean water programs."
+    },
+    "sections": [
+      {
+        "title": "Our mission",
+        "description": "To alleviate the suffering of the Rohingya genocide survivors confined to the world's largest refugee camp in Cox's Bazar, Bangladesh."
+      },
+      {
+        "title": "Our action",
+        "description": "Digging wells, building shelters, paying for medical treatments, and educating children."
+      },
+      {
+        "title": "Get involved",
+        "description": "Help us create a better life for the heavily persecuted Rohingya by supporting our cause."
+      }
+    ]
+  }
+}
+
+  

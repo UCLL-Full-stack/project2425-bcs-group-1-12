@@ -1,15 +1,16 @@
-// components/Header.tsx
-
 import React, { useState } from "react";
+import Language from "./language/language";
+import { useTranslation } from "next-i18next";
 
 const Header: React.FC = () => {
+  const { t } = useTranslation();
+
   const [isDonateHovered, setIsDonateHovered] = useState(false);
-  const [isLoginHovered, setIsLoginHovered] = useState(false);
 
   return (
     <header style={styles.header}>
       <div style={styles.logo}>
-      <a href="/" style={{ display: "inline-block" }}>
+        <a href="/" style={{ display: "inline-block" }}>
           <img
             src="/logo.png"
             alt="Logo"
@@ -19,19 +20,19 @@ const Header: React.FC = () => {
       </div>
       <nav style={styles.nav}>
         <a href="/" style={styles.navLink}>
-          Home
+          {t('header.nav.home')}
         </a>
         <a href="/about" style={styles.navLink}>
-          About us
+          {t('header.nav.about_us')}
         </a>
         <a href="#work" style={styles.navLink}>
-          Our work
+          {t('header.nav.our_work')}
         </a>
         <a href="/get_involved" style={styles.navLink}>
-          Get involved
+          {t('header.nav.get_involved')}
         </a>
         <a href="/contact" style={styles.navLink}>
-          Contact us
+          {t('header.nav.contact_us')}
         </a>
       </nav>
       <div style={styles.buttons}>
@@ -43,20 +44,10 @@ const Header: React.FC = () => {
           onMouseEnter={() => setIsDonateHovered(true)}
           onMouseLeave={() => setIsDonateHovered(false)}
         >
-          <span style={styles.buttonText}>Donate</span>
+          <span style={styles.buttonText}>{t('header.buttons.donate')}</span>
           <img src="/heart.png" alt="Heart" style={styles.heartImage} />
         </button>
-        <button
-          style={{
-            ...styles.loginButton,
-            backgroundColor: isLoginHovered ? "#C2FF9C" : "transparent",
-            color: isLoginHovered ? "black" : "#C2FF9C",
-          }}
-          onMouseEnter={() => setIsLoginHovered(true)}
-          onMouseLeave={() => setIsLoginHovered(false)}
-        >
-          English
-        </button>
+        <Language />
       </div>
     </header>
   );
@@ -104,7 +95,7 @@ const styles = {
     gap: "6px",
     cursor: "pointer",
     minWidth: "120px",
-    transition: "transform 0.3s ease-in-out", // Плавное увеличение
+    transition: "transform 0.3s ease-in-out",
   } as React.CSSProperties,
   heartImage: {
     width: "24px",
@@ -113,17 +104,6 @@ const styles = {
   buttonText: {
     display: "inline-block",
     textAlign: "center",
-  } as React.CSSProperties,
-  loginButton: {
-    backgroundColor: "transparent",
-    color: "#C2FF9C",
-    border: "2px solid #C2FF9C",
-    padding: "10px 15px",
-    borderRadius: "8px",
-    fontSize: "16px",
-    cursor: "pointer",
-    minWidth: "120px",
-    transition: "background-color 0.3s ease-in-out, color 0.3s ease-in-out", // Плавный переход
   } as React.CSSProperties,
 };
 
