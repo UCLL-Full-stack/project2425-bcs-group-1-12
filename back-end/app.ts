@@ -28,7 +28,7 @@ const swaggerOpts = {
     definition: {
         openapi: '3.0.0',
         info: {
-            title: 'Courses API',
+            title: 'Rohingya Charity Organisation API',
             version: '1.0.0',
         },
     },

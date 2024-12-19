@@ -6,6 +6,16 @@ type UserInput = {
     password: string;
 };
 
+type GoalInput = {
+    id?: string;
+    title: string;
+    photo: string; // Здесь вместо File используется строка
+    description: string;
+    targetAmount: number,
+    currentAmount: number
+}
+
+
 type AccountInput = {
     id: number;
     user: UserInput;
@@ -17,4 +27,5 @@ type AccountInput = {
 export {
     UserInput,
     AccountInput,
+    GoalInput
 }

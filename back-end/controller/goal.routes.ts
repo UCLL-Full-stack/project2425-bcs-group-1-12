@@ -27,6 +27,8 @@
 
 import express, { NextFunction, Request, Response } from 'express';
 import goalService from '../service/goal.service';
+import { Goal } from '../model/goal';
+import { GoalInput } from '../types';
 
 const goalRouter = express.Router();
 
@@ -106,10 +108,10 @@ goalRouter.get('/:id', async (req: Request, res: Response, next: NextFunction) =
  *           schema:
  *             $ref: '#/components/schemas/Goal'
  *           example:
- *             name: "Provide Clean Water"
+ *             title: "Provide Clean Water"
+ *             photo: {}
  *             description: "A project to supply clean drinking water to rural areas."
  *             targetAmount: 10000
- *             currentAmount: 1500
  *     responses:
  *       201:
  *         description: Goal added successfully
@@ -120,13 +122,94 @@ goalRouter.get('/:id', async (req: Request, res: Response, next: NextFunction) =
  */
 goalRouter.post('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const goalData = req.body;
+        const goalData: GoalInput = req.body;
+        //const newGoal = 
         const newGoal = await goalService.addGoal(goalData);
         res.status(201).json(newGoal);
     } catch (error) {
         res.status(400).json({ message: (error as Error).message });
     }
 });
+
+/**
+ * @swagger
+ * /goals/{id}:
+ *   put:
+ *     summary: Update a goal by ID
+ *     description: Update all fields of a goal by its unique ID. The entire goal object must be provided.
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The goal ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *               targetAmount:
+ *                 type: number
+ *               currentAmount:
+ *                 type: number
+ *               photo:
+ *                 type: string
+ *             example:
+ *               name: "Updated Goal Name"
+ *               description: "Updated description of the goal."
+ *               targetAmount: 20000
+ *               currentAmount: 5000
+ *               photo: "File"
+ *     responses:
+ *       200:
+ *         description: Goal updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Goal'
+ *       404:
+ *         description: Goal not found
+ *       400:
+ *         description: Invalid request data
+ */
+goalRouter.put('/:id', async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const id = req.params.id;
+        const updateData = req.body;
+
+        // Validate if all required fields are provided in the body (for full update)
+        const { name, description, targetAmount, currentAmount, photo } = updateData;
+        if (!name || !description || targetAmount === undefined || currentAmount === undefined || !photo) {
+            return res.status(400).json({ message: 'All fields (name, description, targetAmount, currentAmount, photo) are required.' });
+        }
+
+        // Call the service to update the goal by ID
+        const updatedGoal = await goalService.updateGoalById(id, {
+            title: name,  // mapping 'name' to 'title'
+            description,
+            requiredAmount: targetAmount,  // mapping 'targetAmount' to 'requiredAmount'
+            //currentAmount,
+            photo: new File([photo], 'uploadedPhoto'), // Assuming photo is a base64 or URL and needs conversion to a File object
+        });
+
+        // Send the updated goal back to the client
+        res.status(200).json(updatedGoal);
+    } catch (error) {
+        if ((error as Error).message === 'Goal not found') {
+            res.status(404).json({ message: (error as Error).message });
+        } else {
+            res.status(400).json({ message: (error as Error).message });
+        }
+    }
+});
+
 
 
 /**

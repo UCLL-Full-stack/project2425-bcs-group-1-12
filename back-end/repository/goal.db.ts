@@ -49,9 +49,26 @@ export const getAllGoals = (): Goal[] => {
     return goals;
 };
 
+// Update goal
+export const updateGoalById = (id: string, updatedGoalData: { title: string; photo: File; description: string; requiredAmount: number }): Goal => {
+    const goal = goals.find((goal) => goal.getId() === id);
+    if (!goal) {
+        throw new Error(`Goal with ID ${id} not found.`);
+    }
+
+    // Теперь мы заменяем все поля
+    goal.setTitle(updatedGoalData.title);
+    goal.setPhoto(updatedGoalData.photo);
+    goal.setDescription(updatedGoalData.description);
+    goal.setRequiredAmount(updatedGoalData.requiredAmount);
+
+    return goal;
+};
+
 export default {
     getAllGoals,
     deleteGoalById,
     getGoalById,
-    addGoal
+    addGoal,
+    updateGoalById
 };
