@@ -26,7 +26,7 @@ const Header: React.FC = () => {
         <Link href="/about" style={styles.navLink}>
           {t('header.nav.about_us')}
         </Link>
-        <Link href="#work" style={styles.navLink}>
+        <Link href="/our_work" style={styles.navLink}>
           {t('header.nav.our_work')}
         </Link>
         <Link href="/get_involved" style={styles.navLink}>

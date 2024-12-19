@@ -1,5 +1,8 @@
 import { Volunteer } from '../model/volunteer';
 import { Admin } from '../model/admin';
+import { User } from '../model/User';
+import { Goal } from '../model/goal';
+
 
 const users = [
     new Volunteer({
@@ -18,13 +21,14 @@ const users = [
 
 const goals: { id: string; description: string }[] = [];
 
-const getUserById = ({ id }: { id: string }) => {
-    try {
-        return users.find((user) => user.getId() === id) || null;
-    } catch (error) {
-        console.error(error);
-        throw new Error('Database error. See server log for details.');
+const getUserById = (id: string): Volunteer | Admin => {
+    
+    const user = users.find((user) => user.getId() === id);
+    if (!user) {
+        throw Error("User does not exist");
     }
+    return user;
+    
 };
 
 const getUsersByRole = ({ role }: { role: string }) => {
@@ -36,14 +40,20 @@ const getUsersByRole = ({ role }: { role: string }) => {
     }
 };
 
-const addUser = (user: Volunteer | Admin) => {
-    if (!(user instanceof Volunteer || user instanceof Admin)) {
-        throw new Error('Invalid user type. User must be an instance of Volunteer or Admin.');
+const assignGoalToVolunteer = (id: string, goal: Goal): string => {
+    const user = getUserById(id); // Предполагаем, что эта функция возвращает объект User.
+
+    if (user instanceof Volunteer) {
+        user.assignGoal(goal);
+    } else {
+        throw new Error('The user must be a volunteer to be assigned a goal.');
     }
-    users.push(user);
+    return "The goal successfuly was assigned to volunteer"
 };
 
-const deleteUserById = ({ id }: { id: string }) => {
+
+
+const deleteUserById = (id: string): void => {
     const index = users.findIndex((user) => user.getId() === id);
     if (index === -1) {
         throw new Error(`User with ID ${id} not found.`);
@@ -51,41 +61,22 @@ const deleteUserById = ({ id }: { id: string }) => {
     users.splice(index, 1);
 };
 
-// Add a new goal (Admin only)
-const addGoal = ({ adminId, goal }: { adminId: string; goal: { id: string; description: string } }) => {
-    const admin = getUserById({ id: adminId });
-    if (!admin || admin.getRole() !== 'admin') {
-        throw new Error('Only admins can add goals.');
-    }
-    goals.push(goal);
+const addUser = (newVolunteer: Volunteer): Volunteer => {
+    users.push(newVolunteer);
+    return newVolunteer;
 };
 
-// Assign a goal to a volunteer
-const assignGoalToVolunteer = ({ volunteerId, goalId }: { volunteerId: string; goalId: string }) => {
-    const volunteer = getUserById({ id: volunteerId });
-    if (!volunteer || volunteer.getRole() !== 'volunteer') {
-        throw new Error('User must be a volunteer to assign goals.');
-    }
-
-    const goal = goals.find((g) => g.id === goalId);
-    if (!goal) {
-        throw new Error(`Goal with ID ${goalId} not found.`);
-    }
-
-    (volunteer as Volunteer).assignGoal(goal.description);
-};
-
-// Get all goals
-const getAllGoals = () => {
-    return goals;
-};
+const getAllUsers = (): User[] => {
+    return users;
+}
 
 export default {
+    getAllUsers,
     getUserById,
-    getUsersByRole,
     addUser,
     deleteUserById,
-    addGoal,
-    assignGoalToVolunteer,
-    getAllGoals,
-};
+    getUsersByRole,
+    assignGoalToVolunteer
+}
+
+

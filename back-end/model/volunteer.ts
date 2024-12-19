@@ -1,7 +1,8 @@
 import { User } from "./User";
+import { Goal } from "./goal";
 
 export class Volunteer extends User {
-    private goals: string[]; // Volunteer can be assigned to goal
+    private goals: Goal[]; // Volunteer can be assigned to goal
 
     constructor(user: {
         firstName: string;
@@ -13,11 +14,11 @@ export class Volunteer extends User {
         this.goals = [];
     }
 
-    assignGoal(goal: string): void {
+    assignGoal(goal: Goal): void {
         this.goals.push(goal);
     }
 
-    getAssignedGoals(): string[] {
+    getAssignedGoals(): Goal[] {
         return this.goals;
     }
 

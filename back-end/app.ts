@@ -7,12 +7,13 @@ import swaggerUi from 'swagger-ui-express';
 //import { accountRouter } from './controller/account.routes'
 import { goalRouter } from './controller/goal.routes';
 import { reportRouter } from './controller/report.routes';
+import { userRouter } from './controller/user.routes';
 
 const app = express();
 dotenv.config();
 const port = process.env.APP_PORT || 3000;
 
-app.use(cors({ origin: 'http://localhost:8000' }));
+app.use(cors({ origin: 'http://localhost:8080' }));
 app.use(bodyParser.json());
 
 
@@ -26,6 +27,8 @@ app.get('/status', (req, res) => {
 app.use('/goals', goalRouter);
 
 app.use('/reports', reportRouter);
+
+app.use('/users', userRouter);
 
 const swaggerOpts = {
     definition: {

@@ -1,3 +1,5 @@
+//import { Goal } from "../model/goal";
+
 type UserInput = {
     id: number;
     firstName: string;
@@ -5,6 +7,15 @@ type UserInput = {
     email: string;
     password: string;
 };
+
+export type VolunteerType = {
+    id?: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    //goals: Goal[];
+}
 
 type GoalInput = {
     id?: string;
