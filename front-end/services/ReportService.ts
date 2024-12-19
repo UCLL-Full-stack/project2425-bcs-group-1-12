@@ -6,7 +6,9 @@ export const getAllReports = async () => {
       throw new Error('Failed to fetch reports');
   }
   const data = await response.json();
+  //console.log(data);
   return data;
+  
 };
 
 
