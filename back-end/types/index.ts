@@ -9,11 +9,20 @@ type UserInput = {
 type GoalInput = {
     id?: string;
     title: string;
-    photo: string; // Здесь вместо File используется строка
+    photo: string; 
     description: string;
     targetAmount: number,
     currentAmount: number
 }
+
+type ReportInput = {
+    id?: string;
+    title: string;
+    date?: Date; 
+    summary: string;
+    file: string; 
+};
+
 
 
 type AccountInput = {
@@ -27,5 +36,6 @@ type AccountInput = {
 export {
     UserInput,
     AccountInput,
-    GoalInput
+    GoalInput,
+    ReportInput
 }

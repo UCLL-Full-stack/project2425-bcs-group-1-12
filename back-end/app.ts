@@ -6,6 +6,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 //import { accountRouter } from './controller/account.routes'
 import { goalRouter } from './controller/goal.routes';
+import { reportRouter } from './controller/report.routes';
 
 const app = express();
 dotenv.config();
@@ -23,6 +24,8 @@ app.get('/status', (req, res) => {
 //app.use('/accounts', accountRouter);
 
 app.use('/goals', goalRouter);
+
+app.use('/reports', reportRouter);
 
 const swaggerOpts = {
     definition: {

@@ -27,7 +27,6 @@
 
 import express, { NextFunction, Request, Response } from 'express';
 import goalService from '../service/goal.service';
-import { Goal } from '../model/goal';
 import { GoalInput } from '../types';
 
 const goalRouter = express.Router();
