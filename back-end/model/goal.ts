@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export class Goal {
     private id: string; // Сделаем id обязательным, без возможности передавать его
     private title: string;
-    private photo: File;
+    private photo?: File;
     private description: string;
     private requiredAmount: number;
     private currentAmount: number;
@@ -33,9 +33,9 @@ export class Goal {
         return this.title;
     }
 
-    getPhoto(): File {
+    /*getPhoto(): File {
         return this.photo;
-    }
+    }*/
 
     getDescription(): string {
         return this.description;

@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
           >
             <li>
               <a
-                href="#tools"
+                href="/tools"
                 style={{ color: "#C2FF9C", textDecoration: "none" }}
               >
                 Tools
