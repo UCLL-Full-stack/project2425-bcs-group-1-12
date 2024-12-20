@@ -2,77 +2,74 @@ import { Volunteer } from '../model/volunteer';
 import { Admin } from '../model/admin';
 import { User } from '../model/User';
 import { Goal } from '../model/goal';
+import database from './database';
 
 
-const users = [
-    new Volunteer({
-        firstName: 'John',
-        lastName: 'Doe',
-        email: 'john.doe@example.com',
-        password: 'StrongPassword1!',
-    }),
-    new Admin({
-        firstName: 'Jane',
-        lastName: 'Smith',
-        email: 'jane.smith@example.com',
-        password: 'SecurePassword2@',
-    }),
-];
+import { PrismaClient, Role } from '@prisma/client';
 
-const goals: { id: string; description: string }[] = [];
+const prisma = new PrismaClient();
 
-const getUserById = (id: string): Volunteer | Admin => {
-    
-    const user = users.find((user) => user.getId() === id);
+const getUserById = async (id: string) => {
+    const user = await prisma.user.findUnique({ where: { id } });
     if (!user) {
-        throw Error("User does not exist");
+        throw new Error("User does not exist");
     }
     return user;
-    
 };
 
-const getUsersByRole = ({ role }: { role: string }) => {
+const getUsersByRole = async ({ role }: { role: Role }) => {
     try {
-        return users.filter((user) => user.getRole() === role);
+        return await prisma.user.findMany({ where: { role } });
     } catch (error) {
         console.error(error);
         throw new Error('Database error. See server log for details.');
     }
 };
 
-const assignGoalToVolunteer = (id: string, goal: Goal): string => {
-    const user = getUserById(id); // Предполагаем, что эта функция возвращает объект User.
+const assignGoalToVolunteer = async (id: string, goalId: string) => {
+    const user = await prisma.user.findUnique({
+        where: { id },
+        include: { Volunteer: true },
+    });
 
-    if (user instanceof Volunteer) {
-        user.assignGoal(goal);
-    } else {
+    if (!user || user.role !== 'VOLUNTEER') {
         throw new Error('The user must be a volunteer to be assigned a goal.');
     }
-    return "The goal successfuly was assigned to volunteer"
+
+    if (!user.Volunteer) {
+        throw new Error('Volunteer information is missing for this user.');
+    }
+
+    await prisma.volunteer.update({
+        where: { id: user.Volunteer.id },
+        data: {
+            goals: {
+                connect: { id: goalId },
+            },
+        },
+    });
+
+    return "The goal successfully was assigned to volunteer";
 };
 
-
-
-const deleteUserById = (id: string): void => {
-    const index = users.findIndex((user) => user.getId() === id);
-    if (index === -1) {
+const deleteUserById = async (id: string): Promise<void> => {
+    const user = await prisma.user.findUnique({ where: { id } });
+    if (!user) {
         throw new Error(`User with ID ${id} not found.`);
     }
-    users.splice(index, 1);
+    await prisma.user.delete({ where: { id } });
 };
 
-const addUser = (newVolunteer: Volunteer): Volunteer => {
-    users.push(newVolunteer);
-    return newVolunteer;
+const addUser = async (newUser: { firstName: string; lastName: string; email: string; password: string; role: Role }) => {
+    return await prisma.user.create({ data: newUser });
 };
 
-const getAllUsers = (): User[] => {
-    return users;
+const getAllUsers = async () => {
+    return await prisma.user.findMany();
 };
 
-const getUserByEmail = (email: string): Volunteer | Admin | undefined => {
-    const user = users.find((user) => user.getEmail() === email);
-    return user;
+const getUserByEmail = async (email: string) => {
+    return await prisma.user.findUnique({ where: { email } });
 };
 
 export default {
@@ -82,7 +79,7 @@ export default {
     deleteUserById,
     getUsersByRole,
     assignGoalToVolunteer,
-    getUserByEmail
-}
+    getUserByEmail,
+};
 
 

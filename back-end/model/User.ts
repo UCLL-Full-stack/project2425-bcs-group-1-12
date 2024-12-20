@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { User as UserPrisma } from '@prisma/client';
 
 export abstract class User {
     private id: string;
@@ -85,3 +86,21 @@ export abstract class User {
 
     abstract getRole(): string;
 }
+
+const from = (userData: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    role: string;
+}) => {
+    return {
+        id: userData.id,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        email: userData.email,
+        password: userData.password,
+        role: userData.role,
+    };
+};

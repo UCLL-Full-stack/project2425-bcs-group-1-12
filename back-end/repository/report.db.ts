@@ -1,51 +1,61 @@
+import { PrismaClient } from '@prisma/client';
 import { Report } from '../model/report';
 
-// Инициализация списка отчетов
-const reports: Report[] = [];
+const prisma = new PrismaClient();
 
-const report1 = new Report({
-    title: "Monthly Financial Report",
-    summary: "This report provides an overview of the financial performance for the month.",
-    file: new File([], ""), // Пустое место вместо файла
-});
-
-const report2 = new Report({
-    title: "Annual Impact Report",
-    summary: "Summary of the organization's impact and achievements over the year.",
-    file: new File([], ""), // Пустое место вместо файла
-});
-
-// Добавляем отчеты в массив
-reports.push(report1, report2);
-
-// Добавление отчета
-export const addReport = (report: Report): Report => {
-    reports.push(report);
-    return report;
+// Adding a new report
+export const addReport = async (report: { title: string; summary: string; file: File }) => {
+    const newReport = await prisma.report.create({
+        data: {
+            title: report.title,
+            summary: report.summary,
+            file: report.file.name, // Assuming the file is represented by its name or path in the database
+        },
+    });
+    return newReport;
 };
 
-// Получение отчета по ID
-export const getReportById = (id: string): Report | null => {
-    return reports.find((report) => report.getId() === id) || null;
+// Getting a report by ID
+export const getReportById = async (id: string): Promise<Report | null> => {
+    const reportData = await prisma.report.findUnique({ where: { id } });
+    if (!reportData) {
+        return null;
+    }
+    return Report.from({
+        id: reportData.id,
+        title: reportData.title,
+        date: reportData.date.toISOString(),
+        summary: reportData.summary,
+        file: new File([], reportData.file), // Reconstructing the File object
+    });
 };
 
-// Удаление отчета по ID
-export const deleteReportById = (id: string): void => {
-    const index = reports.findIndex((report) => report.getId() === id);
-    if (index === -1) {
+// Deleting a report by ID
+export const deleteReportById = async (id: string): Promise<void> => {
+    const report = await prisma.report.findUnique({ where: { id } });
+    if (!report) {
         throw new Error(`Report with ID ${id} not found.`);
     }
-    reports.splice(index, 1);
+    await prisma.report.delete({ where: { id } });
 };
 
-// Получение всех отчетов
-export const getAllReports = (): Report[] => {
-    return reports;
+// Getting all reports
+export const getAllReports = async (): Promise<Report[]> => {
+    const reportDataList = await prisma.report.findMany();
+    return reportDataList.map((reportData) =>
+        Report.from({
+            id: reportData.id,
+            title: reportData.title,
+            date: reportData.date.toISOString(),
+            summary: reportData.summary,
+            file: new File([], reportData.file), // Reconstructing the File object
+        })
+    );
 };
 
 export default {
     getAllReports,
     deleteReportById,
     getReportById,
-    addReport
+    addReport,
 };

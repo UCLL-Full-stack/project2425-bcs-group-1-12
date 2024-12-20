@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { Report as ReportPrisma } from '@prisma/client';
 
 export class Report {
     private id: string;
@@ -57,5 +58,20 @@ export class Report {
         if (!(report.file instanceof File)) {
             throw new Error('File must be a valid file');
         }
+    }
+
+    static from(reportData: {
+        id: string;
+        title: string;
+        date: string; // Date stored as string from the database
+        summary: string;
+        file: File;
+    }): Report {
+        return new Report({
+            title: reportData.title,
+            date: new Date(reportData.date), // Convert string to Date
+            summary: reportData.summary,
+            file: reportData.file,
+        });
     }
 }

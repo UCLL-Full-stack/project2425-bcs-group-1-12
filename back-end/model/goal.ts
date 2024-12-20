@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import { Goal as GoalPrisma } from '@prisma/client';
 
 export class Goal {
     private id: string; // Сделаем id обязательным, без возможности передавать его
@@ -129,5 +130,21 @@ export class Goal {
         if (goal.requiredAmount <= 0) {
             throw new Error('Required amount must be greater than zero');
         }
+    }
+
+    static from({
+        id,
+        title,
+        photo,
+        description,
+        requiredAmount,
+        currentAmount,
+    }: GoalPrisma & { photo?: File; }): Goal {
+        return new Goal({
+            title,
+            photo: photo as File,
+            description,
+            requiredAmount,
+        });
     }
 }

@@ -1,5 +1,6 @@
 import { User } from "./User";
 import { Goal } from "./goal";
+import { User as UserPrisma } from '@prisma/client';
 
 export class Volunteer extends User {
     private goals: Goal[]; // Volunteer can be assigned to goal
@@ -24,5 +25,14 @@ export class Volunteer extends User {
 
     getRole(): string {
         return 'volunteer';
+    }
+
+    static from(userPrisma: UserPrisma): Volunteer {
+        return new Volunteer({
+            firstName: userPrisma.firstName,
+            lastName: userPrisma.lastName,
+            email: userPrisma.email,
+            password: userPrisma.password,
+        });
     }
 }

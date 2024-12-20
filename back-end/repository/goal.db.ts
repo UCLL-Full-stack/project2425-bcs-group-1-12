@@ -1,74 +1,44 @@
-import { Goal } from '../model/goal';
+import { PrismaClient, Goal } from '@prisma/client';
 
-const goal1 = new Goal({
-    title: "Help Children with Education",
-    photo: new File([], ""),  // Место для фото, но пока не используем
-    description: "Providing books and school supplies to children in need.",
-    requiredAmount: 10000,
-});
+const prisma = new PrismaClient();
 
-const goal2 = new Goal({
-    title: "Build a Community Well",
-    photo: new File([], ""),  // Место для фото, но пока не используем
-    description: "Constructing a well to provide clean drinking water for a village.",
-    requiredAmount: 15000,
-});
-
-const goal3 = new Goal({
-    title: "Medical Support for Refugees",
-    photo: new File([], ""),  // Место для фото, но пока не используем
-    description: "Providing medical assistance and supplies to refugees.",
-    requiredAmount: 20000,
-});
-
-// Добавляем цели в список
-const goals = [goal1, goal2, goal3];
-
-// adding Goal
-export const addGoal = (goal: Goal): Goal => {
-    goals.push(goal);
-    return goal;
+// Adding Goal
+export const addGoal = async (goal: { title: string; photo: string; description: string; requiredAmount: number }): Promise<Goal> => {
+    return await prisma.goal.create({
+        data: goal,
+    });
 };
 
 // Get goal by ID
-export const getGoalById = (id: string): Goal | null => {
-    return goals.find((goal) => goal.getId() === id) || null;
+export const getGoalById = async (id: string): Promise<Goal | null> => {
+    return await prisma.goal.findUnique({
+        where: { id },
+    });
 };
 
 // Delete goal
-export const deleteGoalById = (id: string): void => {
-    const index = goals.findIndex((goal) => goal.getId() === id);
-    if (index === -1) {
+export const deleteGoalById = async (id: string): Promise<void> => {
+    const goal = await prisma.goal.findUnique({ where: { id } });
+    if (!goal) {
         throw new Error(`Goal with ID ${id} not found.`);
     }
-    goals.splice(index, 1);
+    await prisma.goal.delete({ where: { id } });
 };
 
 // Get all goals
-export const getAllGoals = (): Goal[] => {
-    return goals;
+export const getAllGoals = async (): Promise<Goal[]> => {
+    return await prisma.goal.findMany();
 };
 
 // Update goal
-export const updateGoalById = (id: string, updatedGoalData: { title: string; photo: File; description: string; requiredAmount: number }): Goal => {
-    const goal = goals.find((goal) => goal.getId() === id);
+export const updateGoalById = async (id: string, updatedGoalData: { title: string; photo: string; description: string; requiredAmount: number }): Promise<Goal> => {
+    const goal = await prisma.goal.findUnique({ where: { id } });
     if (!goal) {
         throw new Error(`Goal with ID ${id} not found.`);
     }
 
-    // Теперь мы заменяем все поля
-    goal.setTitle(updatedGoalData.title);
-    goal.setPhoto(updatedGoalData.photo);
-    goal.setDescription(updatedGoalData.description);
-    goal.setRequiredAmount(updatedGoalData.requiredAmount);
-
-    return goal;
-};
-
-export default {
-    getAllGoals,
-    deleteGoalById,
-    getGoalById,
-    addGoal,
-    updateGoalById
+    return await prisma.goal.update({
+        where: { id },
+        data: updatedGoalData,
+    });
 };
