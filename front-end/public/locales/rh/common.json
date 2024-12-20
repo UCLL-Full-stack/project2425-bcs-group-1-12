@@ -1,0 +1,55 @@
+{
+  "site.title": "Rohingya Zakat Sangstha",
+  "header": {
+    "nav": {
+      "home": "Gori",
+      "about_us": "Amargar goniya",
+      "our_work": "Amar kam",
+      "get_involved": "Hisa lowu",
+      "contact_us": "Amare mola"
+    },
+    "buttons": {
+      "donate": "Dan diya",
+      "language": "Rohingya"
+    }
+  },
+  "home": {
+    "hero": {
+      "heading": "Rohingya Refugees Cox's Bazar, Bangladesh go samborko dipong",
+      "paragraph": "Rohingya sath aiu jonai, amrar shikkha, chirir aroggo, khuda, abashon, ar porishkar pani programor modhe sahajjo korun."
+    },
+    "sections": [
+      {
+        "title": "Amar uddehso",
+        "description": "Rohingya genocid survivor an Cox's Bazar, Bangladesh shorbotho porbortite niye chechhe."
+      },
+      {
+        "title": "Amar kaj",
+        "description": "Khole jala, shelter toiri, medical treatment shomortho, shikkharo kaj."
+      },
+      {
+        "title": "Hisa lowa",
+        "description": "Persecuted Rohingya niye unnoti toiri kora, amrar uddehso support korun."
+      }
+    ]
+  },
+  "banner": {
+      "heading": "Amar program cholai rakhor jonno sahajjo korun",
+      "paragraph": "Medical treatment, shikkha ar infrastructure ke cholai rakhte apnar sahajjo darkar.",
+      "button": "Sahajjo korar jonno click korun"
+    },
+  "footer": {
+    "newsletter": "Sorbosesh update-er jonno amader newsletter-e subscribe korun",
+    "button": "Done",
+    "about_us": "Amader somporke",
+    "tools": "Tools",
+    "volunteer": "Swachhasebok",
+    "terms_of_services": "Login",
+    "privacy_policy": "Goponiyota niti",
+    "follow_us": "Amader onusoron korun",
+    "twitter": "Twitter",
+    "linkedin": "Linkedin",
+    "youtube": "Youtube",
+    "copyright": "©Rohingya Protishthan. 2024"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "site.title": "Rohingya Charity Organisation",
+  "header": {
+    "nav": {
+      "home": "Home",
+      "about_us": "About us",
+      "our_work": "Our work",
+      "get_involved": "Get involved",
+      "contact_us": "Contact us"
+    },
+    "buttons": {
+      "donate": "Donate",
+      "language": "English"
+    }
+  },
+  "home": {
+    "hero": {
+      "heading": "Support Rohingya Refugees in Cox's Bazar, Bangladesh",
+      "paragraph": "Join us in making a difference for the Rohingya by contributing to our education, medical treatment, food, shelter, and clean water programs."
+    },
+    "sections": [
+      {
+        "title": "Our mission",
+        "description": "To alleviate the suffering of the Rohingya genocide survivors confined to the world's largest refugee camp in Cox's Bazar, Bangladesh."
+      },
+      {
+        "title": "Our action",
+        "description": "Digging wells, building shelters, paying for medical treatments, and educating children."
+      },
+      {
+        "title": "Get involved",
+        "description": "Help us create a better life for the heavily persecuted Rohingya by supporting our cause."
+      }
+    ]
+  },
+  "banner": {
+      "heading": "Help us keep our programs up and running",
+      "paragraph": "We can only continue to provide medical treatment, education, and critical infrastructure with your help.",
+      "button": "Click here to support"
+    },
+  "footer": {
+    "newsletter": "Subscribe to our newsletter for the latest updates",
+    "button": "Done",
+    "about_us": "About us",
+    "tools": "Tools",
+    "volunteer": "Volunteer",
+    "terms_of_services": "Login",
+    "privacy_policy": "Privacy policy",
+    "follow_us": "Follow us",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube",
+    "copyright": "©Rohignya Organization. 2024"
+  }
+}
+
+  

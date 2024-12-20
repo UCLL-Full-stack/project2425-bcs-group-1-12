@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // Replace with your database provider
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String    @unique
+  password  String
+  role      Role      // Enum for role differentiation
+  Admin     Admin?    // One-to-one relationship with Admin if the user is an admin
+  Volunteer Volunteer? // One-to-one relationship with Volunteer if the user is a volunteer
+}
+
+model Admin {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Volunteer {
+  id     String  @id @default(uuid())
+  userId String  @unique
+  user   User    @relation(fields: [userId], references: [id])
+  goals  Goal[]  @relation("VolunteerGoals")
+}
+
+model Goal {
+  id             String      @id @default(uuid())
+  title          String
+  photo          String?     // Store file paths or URLs
+  description    String
+  requiredAmount Float
+  currentAmount  Float       @default(0)
+  volunteerGoals Volunteer[] @relation("VolunteerGoals")
+}
+
+model Report {
+  id      String @id @default(uuid())
+  title   String
+  date    DateTime @default(now())
+  summary String
+  file    String  // Store file paths or URLs
+}
+
+enum Role {
+  ADMIN
+  VOLUNTEER
+}

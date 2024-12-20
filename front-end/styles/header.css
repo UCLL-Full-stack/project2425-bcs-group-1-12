@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #000000; /* Цвет фона */
+  }
+  
+  .logo img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .navigation {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navigation a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .donate-btn {
+    background-color: #a3ffb3; /* Цвет кнопки Donate */
+    border: 2px solid #a3ffb3;
+    color: #000000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .login-btn {
+    background-color: transparent;
+    border: 2px solid #a3ffb3; /* Цвет обводки кнопки Login */
+    color: #a3ffb3;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .donate-btn:hover, .login-btn:hover {
+    opacity: 0.8;
+  }
+  
