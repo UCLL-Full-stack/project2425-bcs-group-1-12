@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+// Добавляем импорт функции для добавления пользователя
+import { addUser } from '../services/UserService'; // Убедитесь, что путь к файлу api правильный
+
 const Register: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -8,6 +11,8 @@ const Register: React.FC = () => {
     password: "",
     confirmPassword: "",
   });
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<boolean>(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -16,13 +21,40 @@ const Register: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
-    console.log(formData); // Здесь будет обработка отправки формы
+
+    try {
+      const newUser = await addUser({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+      });
+
+      // Успешная регистрация
+      setSuccess(true);
+      setError(null);
+      console.log("User added successfully:", newUser);
+
+      // Очистить форму
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+
+    } catch (error: any) {
+      setError(error.message); // Показать ошибку, если что-то пошло не так
+      setSuccess(false);
+    }
   };
 
   return (
@@ -37,6 +69,11 @@ const Register: React.FC = () => {
 
       <div style={styles.formContainer}>
         <h1 style={styles.heading}>Register</h1>
+        
+        {/* Показываем сообщение об ошибке или успехе */}
+        {error && <p style={styles.errorText}>{error}</p>}
+        {success && <p style={styles.successText}>User registered successfully!</p>}
+
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.inputGroup}>
             <label htmlFor="firstName" style={styles.label}>
@@ -129,30 +166,30 @@ const Register: React.FC = () => {
 
 const styles = {
   container: {
-    display: "flex",            // Используем flexbox для разделения экрана
-    height: "100vh",            // Занимает всю высоту экрана
-    backgroundColor: "black",  // Чёрный фон
-    color: "#C2FF9C",           // Ярко-зелёный текст
+    display: "flex",
+    height: "100vh",
+    backgroundColor: "black",
+    color: "#C2FF9C",
   } as React.CSSProperties,
 
   leftPanel: {
-    flex: 1,                   // Левая панель займет 50% пространства
-    display: "flex",            // Для центрирования изображения
-    justifyContent: "center",   // Центрирование по горизонтали
-    alignItems: "center",       // Центрирование по вертикали
-    backgroundColor: "black",   // Темный фон
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "black",
   } as React.CSSProperties,
 
   image: {
-    width: "100%",              // Ширина изображения — 100% от контейнера
-    maxWidth: "600px",          // Максимальная ширина изображения
-    height: "auto", 
-    borderRadius: "8px"            // Автоматическая высота
+    width: "100%",
+    maxWidth: "600px",
+    height: "auto",
+    borderRadius: "8px",
   } as React.CSSProperties,
 
   formContainer: {
-    flex: 1,                   // Правая панель займет остальное пространство
-    backgroundColor: "rgba(0, 0, 0, 0.8)", // Темный фон для формы
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
     padding: "40px",
     borderRadius: "8px",
     maxWidth: "500px",
@@ -179,7 +216,7 @@ const styles = {
     display: "block",
     fontSize: "1rem",
     marginBottom: "5px",
-    color: "#C2FF9C", // Ярко-зелёный цвет для меток
+    color: "#C2FF9C",
   } as React.CSSProperties,
 
   input: {
@@ -187,10 +224,10 @@ const styles = {
     padding: "10px",
     fontSize: "1rem",
     borderRadius: "4px",
-    border: "2px solid #C2FF9C",  // Ярко-зелёная граница
-    backgroundColor: "#222",      // Чёрный фон для полей
-    color: "#C2FF9C",             // Ярко-зелёный текст
-    outline: "none",              // Убираем обводку по умолчанию
+    border: "2px solid #C2FF9C",
+    backgroundColor: "#222",
+    color: "#C2FF9C",
+    outline: "none",
   } as React.CSSProperties,
 
   submitButton: {
@@ -201,6 +238,16 @@ const styles = {
     border: "none",
     borderRadius: "4px",
     cursor: "pointer",
+  } as React.CSSProperties,
+
+  errorText: {
+    color: "red",
+    marginBottom: "20px",
+  } as React.CSSProperties,
+
+  successText: {
+    color: "green",
+    marginBottom: "20px",
   } as React.CSSProperties,
 };
 

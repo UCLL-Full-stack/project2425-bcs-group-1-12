@@ -12,6 +12,8 @@ export const getAllGoals = async () => {
 };
 
 
+
+
 export default {
     getAllGoals
 };
