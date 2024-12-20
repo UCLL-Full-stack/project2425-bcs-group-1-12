@@ -1,7 +1,10 @@
+// pages/goal/[goalId].tsx
+
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getGoalById } from "@/services/GoalService"; // API вызов для получения данных цели
 import { GetServerSideProps } from "next";
+import { styles } from "@/components/GoalDetailsStyle"; // Импортируем стили
 
 const GoalDetails: React.FC = () => {
     const router = useRouter();
@@ -45,55 +48,24 @@ const GoalDetails: React.FC = () => {
             <div style={styles.card}>
                 <h1 style={styles.title}>{goal.title}</h1>
                 <p style={styles.description}>{goal.description}</p>
+                <button
+                    style={styles.assignButton}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = styles.assignButtonHover.backgroundColor}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = styles.assignButton.backgroundColor}
+                    onClick={() => console.log("Assign button clicked")}
+                >
+                    Assign
+                </button>
             </div>
         </main>
     );
 };
 
-const styles: { [key: string]: React.CSSProperties } = {
-    container: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        backgroundColor: "#121212", // Тёмный фон
-        color: "#ffffff", // Светлый текст
-        padding: "20px",
-    },
-    card: {
-        maxWidth: "600px",
-        width: "100%",
-        padding: "20px",
-        borderRadius: "10px",
-        backgroundColor: "#1e1e1e", // Чуть светлее для карточки
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
-        textAlign: "center" as "center",
-    },
-    title: {
-        fontSize: "2em",
-        fontWeight: "bold",
-        marginBottom: "20px",
-    },
-    description: {
-        fontSize: "1.2em",
-        color: "#ccc",
-    },
-    loading: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        backgroundColor: "#121212",
-        color: "#ffffff",
-    },
-    error: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        backgroundColor: "#121212",
-        color: "#ff4c4c", // Красный текст для ошибки
-    },
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    // Серверная логика для передачи данных
+    return {
+        props: {}, // Пропсы для серверной стороны
+    };
 };
 
 export default GoalDetails;
