@@ -7,7 +7,7 @@ import { getAllReports }  from '../../services/ReportService';
 import { getAllGoals } from "@/services/GoalService";
 import ReportOverviewTable from '../../components/ReportOverviewTable';
 import React, { useState, useEffect } from 'react';
-import GoalOverviewCards from "@/components/GoalOverviewCards";
+import GoalOverviewCardsAdmin from "@/components/GoalOverviewCards";
 
 const Home: React.FC = () => {
     const [reports, setReports] = useState<any[]>([]);
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
         >
           <h1 style={{ fontSize: "3rem", marginBottom: "20px" }}>Goals to modify</h1>
             {goals.length > 0 ? (
-            <GoalOverviewCards goals={goals} /> // Используем ту же таблицу для целей
+            <GoalOverviewCardsAdmin goals={goals} /> // Используем ту же таблицу для целей
             ) : (
             <p style={{ fontSize: "1.2rem" }}>No goals found.</p>
             )}
