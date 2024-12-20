@@ -6,7 +6,7 @@ import { GoalInput } from '../types';
 import { Goal } from '../model/goal';
 import bcrypt from 'bcrypt';
 
-const getAllUsers = (): User[] => {
+const  getAllUsers = (): User[] => {
     return userDb.getAllUsers();
 };
 
@@ -47,6 +47,7 @@ const assignGoalToVolunteer = (id:string, input: GoalInput): string => {
     });
     return userDb.assignGoalToVolunteer(id, goal);
 };
+
 
 export default {
     getAllUsers,

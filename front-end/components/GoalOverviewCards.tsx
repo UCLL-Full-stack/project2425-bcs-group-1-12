@@ -8,8 +8,9 @@ interface Goal {
   currentAmount: number;
 }
 
-interface Props {
+type Props = {
   goals: Goal[];
+  //selectGoal: (goal: Goal) => void;
 }
 
 const GoalOverviewCards: React.FC<Props> = ({ goals }) => {
@@ -28,6 +29,7 @@ const GoalOverviewCards: React.FC<Props> = ({ goals }) => {
       {goals.map((goal) => (
         <div
           key={goal.id}
+          //onClick={() => selectGoal(goal)}
           style={{
             backgroundColor: '#000',
             color: '#fff',
@@ -39,7 +41,9 @@ const GoalOverviewCards: React.FC<Props> = ({ goals }) => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
+            cursor: 'pointer', // Добавляем указатель для визуального эффекта
           }}
+          role="button"
         >
           <h2 style={{ fontSize: '1.2em', marginBottom: '10px' }}>{goal.title}</h2>
           <p style={{ fontSize: '0.9em', color: '#ccc', marginBottom: '10px' }}>

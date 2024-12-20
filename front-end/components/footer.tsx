@@ -101,7 +101,7 @@ const Footer: React.FC = () => {
             </li>
             <li>
               <a
-                href="#volunteer"
+                href="/volunteer"
                 style={{ color: "#C2FF9C", textDecoration: "none" }}
               >
                 Volunteer

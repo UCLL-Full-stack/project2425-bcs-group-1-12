@@ -11,9 +11,19 @@ export const getAllGoals = async () => {
   
 };
 
+export const getGoalById = async (id: string) => {
+  const response = await fetch(`${API_URL}/goals/${id}`); // Make sure the endpoint matches your API
+  if (!response.ok) {
+      throw new Error('Failed to fetch goal');
+  }
+  const goal = await response.json();
+  return goal;
+};
+
 
 
 
 export default {
-    getAllGoals
+    getAllGoals,
+    getGoalById
 };
