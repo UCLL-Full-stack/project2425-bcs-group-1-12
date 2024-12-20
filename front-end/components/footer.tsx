@@ -1,6 +1,19 @@
 import React from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Footer: React.FC = () => {
+  const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoggedInUser(sessionStorage.getItem("loggedInUser"));
+  }, []);
+
+  const handleClick = () => {
+    sessionStorage.removeItem("loggedInUser");
+    setLoggedInUser(null);
+  };
+
   return (
     <footer
       style={{
@@ -78,12 +91,37 @@ const Footer: React.FC = () => {
             }}
           >
             <li>
-              <a
-                href="#tools"
-                style={{ color: "#C2FF9C", textDecoration: "none" }}
-              >
-                Tools
-              </a>
+              {!loggedInUser && (
+                <Link
+                  href="/login"
+                  style={{ color: "C2FF9C", textDecoration: "none" }}
+                >
+                  Login
+                </Link>
+              )}
+              {loggedInUser && (
+                <a href="#" style={{ color: "C2FF9C", textDecoration: "none" }}>
+                  Logout
+                </a>
+              )}
+            </li>
+            <li>
+              {!loggedInUser && (
+                <Link
+                  href="/login"
+                  style={{ color: "#C2FF9C", textDecoration: "none" }}
+                >
+                  Tools
+                </Link>
+              )}
+              {loggedInUser && (
+                <Link
+                  href="/tools"
+                  style={{ color: "#C2FF9C", textDecoration: "none" }}
+                >
+                  Tools
+                </Link>
+              )}
             </li>
             <li>
               <a
