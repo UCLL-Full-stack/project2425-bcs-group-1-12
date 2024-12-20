@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "next-i18next";
+import Link from "next/link";
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
 
   const handleSubscribe = () => {
@@ -32,9 +35,7 @@ const Footer: React.FC = () => {
       >
         {/* Newsletter Section */}
         <div style={{ flex: 1, marginRight: "20px", textAlign: "left" }}>
-          <h3 style={{ marginBottom: "4vh" }}>
-            Subscribe to our newsletter for the latest updates
-          </h3>
+          <h3 style={{ marginBottom: "4vh" }}>{t('footer.newsletter')}</h3>
           <div style={{ display: "flex", alignItems: "center" }}>
             <input
               type="email"
@@ -65,7 +66,7 @@ const Footer: React.FC = () => {
                 fontSize: "14px",
               }}
             >
-              Done
+              {t('footer.button')}
             </button>
           </div>
         </div>
@@ -82,7 +83,7 @@ const Footer: React.FC = () => {
             alignItems: "flex-start",
           }}
         >
-          <h3 style={{ marginBottom: "4vh" }}>About us</h3>
+          <h3 style={{ marginBottom: "4vh" }}>{t('footer.about_us')}</h3>
           <ul
             style={{
               listStyle: "none",
@@ -92,43 +93,39 @@ const Footer: React.FC = () => {
             }}
           >
             <li>
-              <a
-                href="/tools"
-                style={{ color: "#C2FF9C", textDecoration: "none" }}
-              >
-                Tools
-              </a>
+              <Link href="/tools">
+                <span style={{ color: "#C2FF9C", textDecoration: "none" }}>
+                  {t('footer.tools')}
+                </span>
+              </Link>
             </li>
             <li>
-              <a
-                href="/volunteer"
-                style={{ color: "#C2FF9C", textDecoration: "none" }}
-              >
-                Volunteer
-              </a>
+              <Link href="/volunteer">
+                <span style={{ color: "#C2FF9C", textDecoration: "none" }}>
+                  {t('footer.volunteer')}
+                </span>
+              </Link>
             </li>
             <li>
-              <a
-                href="#terms"
-                style={{ color: "#C2FF9C", textDecoration: "none" }}
-              >
-                Terms of services
-              </a>
+              <Link href="#terms">
+                <span style={{ color: "#C2FF9C", textDecoration: "none" }}>
+                  {t('footer.terms_of_services')}
+                </span>
+              </Link>
             </li>
             <li>
-              <a
-                href="#privacy"
-                style={{ color: "#C2FF9C", textDecoration: "none" }}
-              >
-                Privacy policy
-              </a>
+              <Link href="#privacy">
+                <span style={{ color: "#C2FF9C", textDecoration: "none" }}>
+                  {t('footer.privacy_policy')}
+                </span>
+              </Link>
             </li>
           </ul>
         </div>
 
         {/* Social Media Section */}
         <div style={{ flex: 1, marginLeft: "20px", textAlign: "right" }}>
-          <h3 style={{ marginBottom: "4vh" }}>Follow us</h3>
+          <h3 style={{ marginBottom: "4vh" }}>{t('footer.follow_us')}</h3>
           <div
             style={{
               display: "flex",
@@ -145,7 +142,7 @@ const Footer: React.FC = () => {
             >
               <img
                 src="/twitter.png"
-                alt="Twitter"
+                alt={t('footer.twitter')}
                 style={{ width: "30px", height: "30px" }}
               />
             </a>
@@ -156,7 +153,7 @@ const Footer: React.FC = () => {
             >
               <img
                 src="/linked-in.png"
-                alt="LinkedIn"
+                alt={t('footer.linkedin')}
                 style={{ width: "30px", height: "30px" }}
               />
             </a>
@@ -169,7 +166,7 @@ const Footer: React.FC = () => {
           >
             <img
               src="/youtube.png"
-              alt="YouTube"
+              alt={t('footer.youtube')}
               style={{ width: "47px", height: "30px", marginTop: "10px" }}
             />
           </a>
@@ -178,7 +175,7 @@ const Footer: React.FC = () => {
 
       {/* Copyright Section */}
       <div style={{ marginTop: "20px", textAlign: "center" }}>
-        <p>©Rohignya Organization. 2024</p>
+        <p>{t('footer.copyright')}</p>
       </div>
     </footer>
   );

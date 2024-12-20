@@ -32,6 +32,20 @@
         "description": "Help us create a better life for the heavily persecuted Rohingya by supporting our cause."
       }
     ]
+  },
+  "footer": {
+    "newsletter": "Subscribe to our newsletter for the latest updates",
+    "button": "Done",
+    "about_us": "About us",
+    "tools": "Tools",
+    "volunteer": "Volunteer",
+    "terms_of_services": "Terms of services",
+    "privacy_policy": "Privacy policy",
+    "follow_us": "Follow us",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "youtube": "YouTube",
+    "copyright": "©Rohignya Organization. 2024"
   }
 }
 

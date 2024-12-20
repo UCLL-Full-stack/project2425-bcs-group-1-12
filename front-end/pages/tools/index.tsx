@@ -9,7 +9,6 @@ import ReportOverviewTable from '../../components/ReportOverviewTable';
 import React, { useState, useEffect } from 'react';
 import GoalOverviewCards from "@/components/GoalOverviewCards";
 
-
 const Home: React.FC = () => {
     const [reports, setReports] = useState<any[]>([]);
     const [goals, setGoals] = useState<any[]>([]);
@@ -62,6 +61,22 @@ const Home: React.FC = () => {
             ) : (
             <p style={{ fontSize: "1.2rem" }}>No goals found.</p>
             )}
+          <a 
+            href="/tools/add_goal" 
+            style={{
+              display: "inline-block",
+              marginTop: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#FFA500",
+              color: "#000",
+              textDecoration: "none",
+              fontSize: "1.2rem",
+              borderRadius: "5px",
+              fontWeight: "bold",
+            }}
+          >
+            Add New Goal
+          </a>
           <h1 style={{ fontSize: "3rem", marginBottom: "20px" }}>Reports to modify</h1>
           {reports.length > 0 ? (
             <ReportOverviewTable reports={reports} />
