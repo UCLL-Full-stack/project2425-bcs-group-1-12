@@ -68,7 +68,12 @@ const addUser = (newVolunteer: Volunteer): Volunteer => {
 
 const getAllUsers = (): User[] => {
     return users;
-}
+};
+
+const getUserByEmail = (email: string): Volunteer | Admin | undefined => {
+    const user = users.find((user) => user.getEmail() === email);
+    return user;
+};
 
 export default {
     getAllUsers,
@@ -76,7 +81,8 @@ export default {
     addUser,
     deleteUserById,
     getUsersByRole,
-    assignGoalToVolunteer
+    assignGoalToVolunteer,
+    getUserByEmail
 }
 
 

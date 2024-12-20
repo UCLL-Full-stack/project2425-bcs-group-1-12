@@ -134,7 +134,7 @@ userRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {
 userRouter.post('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const volunteerInput: VolunteerType = req.body;
-        const newVolunteer = userService.addUser(volunteerInput); // addUser method adds a volunteer
+        const newVolunteer = await userService.addUser(volunteerInput); // addUser method adds a volunteer
         res.status(201).json(newVolunteer);
     } catch (error) {
         res.status(400).json({ message: (error as Error).message });

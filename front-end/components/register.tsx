@@ -14,6 +14,8 @@ const Register: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<boolean>(false);
 
+  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -51,6 +53,8 @@ const Register: React.FC = () => {
         confirmPassword: "",
       });
 
+      
+
     } catch (error: any) {
       setError(error.message); // Показать ошибку, если что-то пошло не так
       setSuccess(false);
@@ -72,7 +76,7 @@ const Register: React.FC = () => {
         
         {/* Показываем сообщение об ошибке или успехе */}
         {error && <p style={styles.errorText}>{error}</p>}
-        {success && <p style={styles.successText}>User registered successfully!</p>}
+        {success && <p style={styles.successText}>User registered successfully! To Login please visit /volunteer - you can find the link in footer</p>}
 
         <form onSubmit={handleSubmit} style={styles.form}>
           <div style={styles.inputGroup}>

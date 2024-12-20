@@ -63,11 +63,11 @@ export abstract class User {
         if (!user.password?.trim()) {
             throw new Error('Password is required');
         }
-        if (!this.isStrongPassword(user.password)) {
+        /*if (!this.isStrongPassword(user.password)) {
             throw new Error(
                 'Password must be at least 8 characters long, include one uppercase letter, one lowercase letter, one number, and one special character.'
             );
-        }
+        }*/
     }
 
     private isValidEmail(email: string): boolean {
